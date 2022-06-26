@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    def ext = rootProject.extensions.ext
+
+    compileSdk ext.android.compileSdk
+
+    defaultConfig {
+        applicationId ext.application.id
+        minSdk ext.android.minSdk
+        targetSdk ext.android.targetSdk
+        versionCode ext.application.versionCode
+        versionName ext.android.versionName
+
+        testInstrumentationRunner ext.application.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'Boolean', "ENABLE_LOG", "false"
+        }
+    }
+    compileOptions {
+        sourceCompatibility ext.compiler.java
+        targetCompatibility ext.compiler.java
+    }
+
+    kotlinOptions {
+        jvmTarget = ext.compiler.java
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+    kapt allkapt.base
+    kaptTest allkapt.base
+
+    testImplementation commonTest
+    androidTestImplementation commonInstrumentationTest
+
+    implementation kotlinn
+    implementation androidx
+    implementation lifecycle
+    implementation di
+    implementation navigation
+    implementation common.dialog
+    implementation design.material
+    implementation design.constraintLayout
+    implementation design.swipe
+}

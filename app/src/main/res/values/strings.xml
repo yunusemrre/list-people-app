@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ListPeople</string>
+    <string name="msg_no_one_listing">There is no one for listing, try again?</string>
+    <string name="msg_no_new_data">No new data</string>
+    <string name="msg_error_occurred">Error occurred, try again?</string>
+
+    <string name="title_id">ID</string>
+    <string name="title_fullname">Full Name</string>
+
+    <string name="txt_yes">yes</string>
+    <string name="txt_cancel">cancel</string>
+</resources>

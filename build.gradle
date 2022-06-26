@@ -1,0 +1,21 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        apply from: 'config/dependencies.gradle'
+        apply from: 'config/dependencies.gradle', to: it
+        classpath "com.android.tools.build:gradle:$it.version.gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$it.compiler.kotlin"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$it.version.hilt"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$it.version.navigation"
+    }
+}
+
+plugins {
+    id 'com.android.application' version '7.1.2' apply false
+    id 'com.android.library' version '7.1.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
